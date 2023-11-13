@@ -35,8 +35,8 @@ class LogInController extends GetxController {
         password: passwordController.text,
         onSuccess: (user, token) async {
           loading.hide();
-          // final box = GetStorage();
-          // await box.write(StorageKeys.USER, json.encode(user.toJson()));
+          final box = GetStorage();
+          await box.write(StorageKeys.USER, json.encode(user.toJson()));
           Get.put(CoreController()).loadCurrentUser();
           Get.offAllNamed(DashScreen.routeName);
           CustomSnackBar.success(title: "Login", message: "Login Successful");

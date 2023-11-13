@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:user_app/controller/core_controller.dart';
 import 'package:user_app/utils/colors.dart';
 
 class ProfileScreen extends StatelessWidget {
   static const routeName = '/profile_screen';
-  // final coreController = Get.find<CoreController>();
-  const ProfileScreen({super.key});
+  final coreController = Get.find<CoreController>();
+  ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -58,18 +59,18 @@ class ProfileScreen extends StatelessWidget {
               ),
             ],
           ),
-          const ProfileCard(
-            content: "The Flying Carpet",
+          ProfileCard(
+            content: coreController.currentUser.value!.name.toString(),
             iconData: Icons.person_2_outlined,
             title: 'Name',
           ),
-          const ProfileCard(
-            content: "Washington Ave., Fort Worth, TX 76104",
+          ProfileCard(
+            content: coreController.currentUser.value!.email.toString(),
             iconData: Icons.mail,
-            title: 'Address',
+            title: 'Email',
           ),
-          const ProfileCard(
-            content: "1 682-250-2427",
+          ProfileCard(
+            content: coreController.currentUser.value!.mobile.toString(),
             iconData: Icons.phone,
             title: 'Contact',
           ),
@@ -85,7 +86,7 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              // coreController.logOut();
+              coreController.logOut();
             },
             child: const Padding(
               padding: EdgeInsets.symmetric(

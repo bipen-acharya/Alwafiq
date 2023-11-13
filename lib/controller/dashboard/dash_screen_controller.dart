@@ -8,7 +8,7 @@ class DashScreenController extends GetxController {
   RxList<Widget> pages = RxList(
     [
       HomeScreen(),
-      const ProfileScreen(),
+      ProfileScreen(),
     ],
   );
 

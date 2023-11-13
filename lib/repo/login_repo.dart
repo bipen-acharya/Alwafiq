@@ -29,8 +29,10 @@ class LoginRepo {
       log(json.encode(body));
       log(response.body);
       dynamic data = jsonDecode(response.body);
+      print(data);
       if (response.statusCode == 200) {
         String token = json.encode(data["token"]);
+        print(token);
         User user = User.fromJson(data["data"]);
         onSuccess(user, token);
       } else {

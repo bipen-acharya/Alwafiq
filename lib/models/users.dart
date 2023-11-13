@@ -109,4 +109,43 @@ class User {
       updatedAt: json['updated_at'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'company_key': companyKey,
+      'username': username,
+      'email': email,
+      'mobile': mobile,
+      'profile_picture': profilePicture,
+      'country': country,
+      'timezone': timezone,
+      'active': active,
+      'email_confirmed': emailConfirmed,
+      'mobile_confirmed': mobileConfirmed,
+      'fcm_token': fcmToken,
+      'apn_token': apnToken,
+      'refferal_code': referralCode,
+      'referred_by': referredBy,
+      'rating': rating,
+      'lang': lang,
+      'rating_total': ratingTotal,
+      'no_of_ratings': noOfRatings,
+      'login_by': loginBy,
+      'last_known_ip': lastKnownIp,
+      'last_login_at': lastLoginAt,
+      'social_provider': socialProvider,
+      'social_nickname': socialNickname,
+      'social_id': socialId,
+      'social_token': socialToken,
+      'social_token_secret': socialTokenSecret,
+      'social_refresh_token': socialRefreshToken,
+      'social_expires_in': socialExpiresIn,
+      'social_avatar': socialAvatar,
+      'social_avatar_original': socialAvatarOriginal,
+      'created_at': createdAt,
+      'updated_at': updatedAt,
+    };
+  }
 }
