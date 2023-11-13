@@ -37,7 +37,7 @@ class DashScreen extends StatelessWidget {
               items: [
                 BottomNavigationBarItem(
                   icon: Padding(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                         top: 9,
                       ),
                       child: Icon(

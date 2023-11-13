@@ -28,24 +28,25 @@ class LogInController extends GetxController {
 
   void onSubmit() async {
     Get.offAll(DashScreen());
-    // if (formKey.currentState!.validate()) {
-    //   loading.show(message: "Please Wait ...");
-    //   await LoginRepo.login(
-    //     email: emailController.text,
-    //     password: passwordController.text,
-    //     onSuccess: (user,token) async {
-    //       loading.hide();
-    //       final box = GetStorage();
-    //       await box.write(StorageKeys.USER, json.encode(user.toJson()));
-    //       Get.put(CoreController()).loadCurrentUser();
-    //       Get.offAllNamed(DashScreen.routeName);
-    //       CustomSnackBar.success(title: "Login", message: "Login Successful");
-    //     },
-    //     onError: (message) {
-    //       loading.hide();
-    //       CustomSnackBar.error(title: "Login", message: message);
-    //     },
-    //   );
-    // }
+    if (formKey.currentState!.validate()) {
+      loading.show(message: "Please Wait ...");
+      await LoginRepo.login(
+        email: emailController.text,
+        password: passwordController.text,
+        onSuccess: (user, token) async {
+          loading.hide();
+          final box = GetStorage();
+          await box.write(StorageKeys.USER, json.encode(user.toJson()));
+          Get.put(CoreController()).loadCurrentUser();
+          Get.offAllNamed(DashScreen.routeName);
+          CustomSnackBar.success(title: "Login", message: "Login Successful");
+        },
+        onError: (message) {
+          print(message);
+          loading.hide();
+          CustomSnackBar.error(title: "Login", message: message);
+        },
+      );
+    }
   }
 }
