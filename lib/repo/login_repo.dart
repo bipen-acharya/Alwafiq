@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'package:user_app/models/users.dart';
 
-
 import 'package:http/http.dart' as http;
 
 import '../../utils/apis.dart';
@@ -30,9 +29,9 @@ class LoginRepo {
       log(json.encode(body));
       log(response.body);
       dynamic data = jsonDecode(response.body);
-      if (data["status"] == "success") {
-        String token = json.encode(data["data"]["token"]);
-        User user = User.fromJson(data["data"]["user"]);
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        String token = json.encode(data["token"]);
+        User user = User.fromJson(data["user"]);
         onSuccess(user, token);
       } else {
         onError(data["message"]);
